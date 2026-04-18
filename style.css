@@ -1,0 +1,272 @@
+/* Общие стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #fff8f6, #fdeeea);
+  color: #2c2c2c;
+  text-align: center;
+  padding: 20px;
+}
+
+h1, h2 {
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #a33;
+}
+
+/* Анимации */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes growLine {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Шапка */
+.hero {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  padding: 50px 20px;
+  border-radius: 24px;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+}
+
+.hero:hover {
+  transform: translateY(-5px);
+}
+
+.couple-photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  transition: all 0.5s ease;
+}
+
+.couple-photo:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+.date {
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+/* Секции */
+section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.details, .countdown, .rsvp, .gallery, .map, .share {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.countdown #timer {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #a44;
+  margin-top: 15px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  animation: pulse 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.wedding-info {
+  list-style: none;
+  text-align: left;
+  font-size: 1.1rem;
+  color: #555;
+  padding: 0 10px;
+}
+
+.wedding-info li {
+  margin: 12px 0;
+  border-bottom: 1px dashed #ddd;
+  padding-bottom: 6px;
+}
+
+/* 📸 Улучшенная галерея */
+.gallery-grid {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 400px;   /* ⬅️ увеличили */
+  margin: 0 auto;
+}
+
+.gallery-grid img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  height: 100%; /* ⬅️ важно */
+  object-fit: cover;
+
+  border-radius: 20px;
+
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.gallery {
+  margin-bottom: 80px; /* ⬅️ отступ вниз */
+}
+
+.gallery-grid img.active {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  filter: brightness(1.05) contrast(1.05);
+}
+
+.gallery-grid img.hidden {
+  opacity: 0;
+  transform: translateX(-50%) scale(1.08);
+}
+
+.gallery-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.05),
+    rgba(0,0,0,0.2)
+  );
+}
+
+
+
+.ourstory img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  margin: 0 auto 30px;
+  object-fit: cover;
+}
+
+.ourstory {
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  position: relative;
+  padding-left: 40px;
+  border-left: 4px solid #a44;
+  animation: fadeIn 1s ease forwards;
+}
+
+.ourstory::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #a44, #fceaea);
+  animation: growLine 2s ease-in-out forwards;
+}
+
+.btn {
+  background: linear-gradient(to right, #a44, #d55);
+  color: white;
+  padding: 14px 28px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #833, #b33);
+  transform: translateY(-2px);
+}
+
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  background: #fceaea;
+  color: #a44;
+  border-radius: 12px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .btn {
+    padding: 12px 20px;
+  }
+
+  .countdown #timer {
+    font-size: 2rem;
+  }
+
+  .ourstory {
+    padding-left: 20px;
+    border-left-width: 2px;
+  }
+
+  .ourstory::before {
+    width: 2px;
+  }
+
+  .gallery-grid img {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+  }
+}
